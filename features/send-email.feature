@@ -1,6 +1,6 @@
 Feature: Send email on Datapub app Website
 
-@Test
+@javascript
 Scenario: Search for the website        
 	Given I am on the Datapubapp homepage
 	Then I click the contact link

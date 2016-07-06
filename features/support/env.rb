@@ -1,17 +1,9 @@
 require 'rspec/expectations'
 require 'capybara/cucumber'
+require 'capybara-screenshot/cucumber'
 
-Capybara.default_driver = :selenium
-
-Before do
-  if Capybara.current_driver == :selenium
-    require 'headless'
-
-    headless = Headless.new
-    headless.start
-  end
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
-end
+Capybara.javascript_driver = :chrome
